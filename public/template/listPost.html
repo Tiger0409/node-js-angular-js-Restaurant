@@ -1,0 +1,38 @@
+<div class='contentView container' ng-model='posts'>
+	<div id="navbar-menu" class="collapse navbar-collapse">
+		<nav class="navbar navbar-default navView" id="navbar">
+            <div id="navbar-menu" class="collapse navbar-collapse">
+                <div class="col-md-3">
+                    <form ng-controller="searchCtrl" class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" ng-model="keyWord" class="form-control" placeholder="Search" value="{{keyWord}}">
+                        </div>
+                            <button type="submit" ng-click="search()" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                    </form>
+                </div>
+                <ul class="nav navbar-nav col-md-3 navbar-right" ng-controller="homepageCtrl">
+                    <li><a class="pointStyle" ng-click="_checkIfsignin()">Write Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+	</div>
+	<span ng-if="!isSearch" class="lastPage o">The following is a list of articles</span>
+	<span ng-if="isSearch" class="lastPage o">The following is the search result</span>
+	<li ng-repeat="post in posts" class='list-unstyled myListstyle'>
+		<hr>
+		<h2>
+			<a href="" class="list-title" ng-click="getTargetpost(post._id)">{{post.title}}</a>
+				<span ng-if="post.isHide" class="hideInfo">The article has been hidden by the administrator</span>
+		</h2>
+		<div class="list-foot ">
+			<span class="glyphicon glyphicon-time"></span>
+				Published : {{post.date | date: 'yyyy-MM-dd HH:mm'}} 
+			<span class="glyphicon glyphicon-user offset">
+			Author : {{post.author}}</span></div>
+		<button type="button" class="btn btn-default btn-mystyle" ng-click="getTargetpost(post._id)">Read more</button>
+	</li>
+	<hr>
+	<img src="./images/info3.png" ng-if="amount === 0 && !isSearch">
+	<img src="./images/info2.png" ng-if="amount === 0 && isSearch">
+	<paging><paging>
+</div>

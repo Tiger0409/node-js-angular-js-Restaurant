@@ -1,0 +1,32 @@
+<div class="container" ng-model='products'>
+<div class="collapse navbar-collapse navbar-add-categoy"  >
+	<div class="nav navbar-nav navbar-right" ng-if="isAdmin()">
+		<a ng-href="#/add-category" class="add-categoy pointStyle">
+		<span class="glyphicon glyphicon-cloud-upload"></span>&nbsp; Add Category</a>
+	</div>
+</div>
+  <h2 id="menu-categories-title" class="text-center">Menu Categories</h2>
+  <div class="text-center">
+    Substituting white rice with brown rice or fried rice after 3:00pm will be $1.50 for a pint and $2.50 for a quart.
+  </div>
+  <div ng-repeat="product in products" class='list-unstyled myListstyle'>
+		<div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+		  <a href="" class="list-title" ng-click="getTargetproduct(product._id)">
+			<div class="category-tile">
+			  <img width="200" height="200" ng-src="{{product.images}}" alt="{{product.title}}">
+			  <span>{{product.title | limitTo:15}}</span>
+			  
+			</div>
+		  </a>
+			<div class="nav navbar-nav navbar-right action-menu-center" ng-if="isAdmin()">
+				<a class="btn btn-modify pull-right custom-btn" href="" ng-click="editProduct(product._id)">
+						<i aria-hidden="true" class="glyphicon glyphicon-pencil"></i>&nbsp;Modify
+				</a>
+				<a class="btn btn-delete pull-right custom-btn" href="" ng-click="deleteProduct(product._id)">
+						<i aria-hidden="true" class="glyphicon glyphicon-remove-sign"></i>&nbsp;Delete
+				</a>
+			</div>
+		</div>
+
+  </div>
+</div>

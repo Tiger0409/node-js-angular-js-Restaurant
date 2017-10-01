@@ -1,0 +1,14 @@
+<div class='contentView container' ng-model='posts'>
+	<span ng-if="!isSearch" class="lastPage o">The following is your blog list</span>
+	<span ng-if="isSearch" class="lastPage o">Here are the search results for your blog</span>
+	<li ng-repeat="post in posts" class='list-unstyled myListstyle'>
+	<hr>
+	<h2><a href="" class="list-title" ng-click="getTargetpost(post._id)">{{post.title}}</a><span ng-if="post.isHide" class="hideInfo">The article has been hidden by the administrator</span></h2>
+	<div class="list-foot "><span class="glyphicon glyphicon-time"></span>Published : {{post.date | date: 'yyyy-MM-dd HH:mm'}} <span class="glyphicon glyphicon-user offset">Author : {{post.author}}</span></div>
+	<button type="button" class="btn btn-default btn-mystyle" ng-click="getTargetpost(post._id)">Read more</button>
+	</li>
+	<hr>
+	<img src="../images/info.png" ng-if="amount === 0 && !isSearch">
+	<img src="../images/info2.png" ng-if="amount === 0 && isSearch">
+	<paging></paging>
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+<div ng-repeat="productItem in productItems">
+	<div class="collapse navbar-collapse navbar-add-categoy"  >
+		<div class="nav navbar-nav navbar-right" ng-if="isAdmin()">
+			<a href="#/add-menu"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp; Add Menu</a>
+		</div>
+	</div>
+		<h2 id="menu-categories-title" class="text-center">
+			{{productItem.title}} Menu
+		</h2>
+		<div class="text-center">
+			{{ productItem.dec}}
+		</div>
+		
+		<div ng-repeat="item in productItem.items">
+			<div class="menu-item-tile col-md-6">
+			  <div class="row">
+				<div class="col-sm-5">
+				  <div class="menu-item-photo">
+					<div>{{item.short_title}}</div>
+					<img class="img-responsive" width="250" height="150" ng-src="{{item.image}}" alt="{{item.title}}">
+				  </div>
+				  <div class="menu-item-price">{{item.price | currency}}</div>
+				</div>
+				<div class="menu-item-description col-sm-7">
+				  <h3 class="menu-item-title">{{item.title}}</h3>
+				  <p class="menu-item-details">{{item.description}}</p>
+				  <a href="/add-to-cart/{{this._id}}/false" class="btn btn-success pull-right custom-btn" role="button">Add Cart</a>
+				 <a ng-if="isAdmin()" href="" class="btn btn-delete pull-right custom-btn " role="button" ng-click="deleteItem(productItem.items.indexOf(item))">
+					<i aria-hidden="true" class="glyphicon glyphicon-remove-sign"></i>
+					Delete</a>
+				<a ng-if="isAdmin()" href="" class="btn btn-modify pull-right custom-btn " role="button" ng-click="editItem(productItem.items.indexOf(item))">
+					<i aria-hidden="true" class="glyphicon glyphicon-pencil"></i>
+				Modify</a>
+			
+				</div>
+			  </div>
+			  <hr class="visible-xs">
+			</div>
+			
+		</div>
+
+	</div> 
+</div>

@@ -1,0 +1,172 @@
+extends layout
+
+block content
+
+  body(ng-app='restaurant' ng-controller='homepageCtrl')
+    // Fixed position loading indicator
+    loading.loading-indicator
+    |   
+    header
+      nav#header-nav.navbar.navbar-default
+        .container
+          .navbar-header
+            a.pull-left.visible-md.visible-lg(href="#/")
+              #logo-img(alt='Logo image')
+            |    
+            | 
+            .navbar-brand
+              a(href="#/")
+                h1 HAHA Chinese Restaurant
+              | 
+              p
+                img(src='images/star-k-logo.png', alt='Five Star~~~')
+                | 
+                span Five Star~~~
+            | 
+            button#navbarToggle.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#collapsable-nav', aria-expanded='false')
+              span.sr-only Toggle navigation
+              | 
+              | 
+              span.icon-bar
+              | 
+              span.icon-bar
+              | 
+              span.icon-bar
+          |         
+          #collapsable-nav.collapse.navbar-collapse
+            ul#nav-list.nav.navbar-nav.navbar-right
+              li#navHomeButton.visible-xs
+                a(href='#/')
+                  span.glyphicon.glyphicon-home
+                  | Home
+              |       
+              |             
+              li#navMenuButton(ui-sref-active='active')
+                a(href='#/menu')
+                  span.glyphicon.glyphicon-cutlery
+                  | 
+                  br.hidden-xs
+                  | Menu
+              |             
+              li
+                a(href='#/about')
+                  span.glyphicon.glyphicon-info-sign
+                  | 
+                  br.hidden-xs
+                  | About
+              |             
+              li
+                a(href='#/awards')
+                  span.glyphicon.glyphicon-certificate
+                  | 
+                  br.hidden-xs
+                  | Awards
+              |               
+              |             
+              li#navBlogButton
+                a(href='#/blog')
+                  span.glyphicon.glyphicon-credit-card
+                  | 
+                  br.hidden-xs
+                  | Blog
+              | 
+              li#phone.hidden-xs
+                a(href='tel:519-729-6872')
+                  span 519-729-6872
+                | 
+                div * We Deliver
+            // #cart-list
+            #bs-example-navbar-collapse-1.collapse.shopping-cart.navbar-collapse
+              ul.nav.navbar-nav.navbar-right
+                li
+                  a(href='/cart')
+                    i.glyphicon.glyphicon-briefcase(aria-hidden='true')
+                    | Shopping Cart
+                    | 
+                    span.badge
+                      {{totalQty}}
+                |   
+                li.dropdown
+                  a.dropdown-toggle(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                    i.glyphicon.glyphicon-user(aria-hidden='true')
+                    | User Management
+                    span.caret
+                  | 
+                  | 
+                  ul.dropdown-menu
+                    li
+                      a(href='' ng-if='canShow()' ng-click='logOut()') Order Details
+                    | 
+                    |   
+                    li
+                      a(href='' ng-if='canShow()' ng-click='logOut()') Logout 
+                    li
+                      a(href='#/signup' ng-if='!canShow()') Sign Up
+                    | 
+                    |   
+                    li
+                      a(href='#/signin' ng-if='!canShow()') Sign In 
+            // /.cart-collapse
+          // .collapse .navbar-collapse
+        // .container
+      // #header-nav
+    #call-btn.visible-xs
+      a.btn(href='tel:519-729-6872')
+        span.glyphicon.glyphicon-earphone
+        | 519-729-6872
+    #xs-deliver.text-center.visible-xs * We Deliver
+    div(ng-view='')
+    footer.panel-footer
+      .container
+        .row
+          section#hours.col-sm-4
+            span Hours:
+            | 
+            br
+            | Sun-Thurs: 11:15am - 10:00pm
+            | 
+            br
+            | Fri: 11:15am - 2:30pm
+            | 
+            br
+            | Saturday Closed
+            | 
+            hr.visible-xs
+          |   
+          |         
+          section#address.col-sm-4
+            span Address:
+            | 
+            br
+            | University Avenue West
+            | 
+            br
+            | Waterloo, N2L 3G
+            | 
+            p
+              | * Delivery area within 3-4 miles, with minimum order of $20 plus $3 charge for all deliveries.
+            |      
+            | 
+            hr.visible-xs
+          |         
+          section#testimonials.col-sm-4
+            p &quot;Oh my god! The hotpot is soooo awesome!&quot;
+            |           
+            p &quot;Waterloo food star! Love it:)))&quot;
+        |       
+        .text-center
+          | &copy; HAHA reserved |
+          a(ui-sref='admin.auth') Admin
+    // Libs
+    script(src='javascripts/lib/angular-ui-router.min.js')
+    |  
+    script(src='javascripts/lib/ng-file-upload/ng-file-upload-shim.min.js')
+    script(src='javascripts/lib/ng-file-upload/ng-file-upload.min.js')
+    // Main Restaurant Module
+    script(src='javascripts/restaurant.module.js')
+    |   
+    script(src='javascripts/service.js')
+    |   
+    script(src='javascripts/controller.js')
+    script(src='javascripts/directive.js')
+    script(src='javascripts/encryption.js')

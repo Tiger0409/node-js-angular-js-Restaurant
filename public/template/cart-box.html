@@ -1,0 +1,58 @@
+<div class="container">
+	<h2 id="menu-categories-title" class="text-center">Menu Categories</h2>
+	<div class="text-center">
+	Substituting white rice with brown rice or fried rice after 3:00pm will be $1.50 for a pint and $2.50 for a quart.
+	</div>
+	<div ng-repeat="menuCategory in menuCtrl.menuCategories">
+		<div ng-repeat="category in menuCategory">
+			<div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+			  <a>
+				<div class="category-tile">
+				 <img width="200" height="200" ng-src={{category.image}} alt="{{category.menutitle}}"> 
+				  <span>{{category.menutitle}}</span>
+				</div> 
+			  </a>
+			 </div>
+		</div>
+	</div>
+</div>
+<div>
+	<button id="add-button" class="btn glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#myModal">Add</button>
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">ADD Category</h4>
+				</div>
+				<div class="modal-body">
+					<div ng-class="{'errorAlert': true, 'AlertPosit-wirte':true, 'show': AlertInfo !== ''}"><div class="arrow"></div>{{menuCtrl.AlertInfo}}</div>
+					<div class="firstpart">
+						Title: &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="text" placeholder="title" id="Title" ng-model="menuCtrl.categoryTitle"><br>
+						Description: <input type="text" placeholder="Description" name="Description" ng-model="menuCtrl.Description"><br>
+						Price:  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="text" placeholder="$:e.x)25" name="Price" ng-model="menuCtrl.Price">
+					</div>
+					<div>
+						<div class="container-2">
+							<div>
+							  <div class="form-group" >
+								<img class="img-responsive img-rounded admin-img" style="width:250px;height:150px;" ngf-src="menuCtrl.categoryImageFile" alt="imag2">
+							  </div>
+							  <div class="form-group">
+								<button class="btn btn-default"
+								  ng-model="menuCtrl.categoryImageFile"
+								  ngf-select="menuCtrl.uploadImageFile($file)"
+								>Choose</button>
+								<span class="small">Image must be 250w X 150h pixels</span>
+							  </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default"  ng-click="menuCtrl.add()">save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

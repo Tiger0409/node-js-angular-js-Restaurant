@@ -1,0 +1,55 @@
+
+<div class="container">
+	<div ng-class="{'errorAlert': true, 'AlertPosit-wirte':true, 'show': AlertInfo !== ''}"><div class="arrow"></div>{{AlertInfo}}</div>
+	<h2 ng-if="isEdit()">Edit Menu</h2>
+	<h2 ng-if="!isEdit()">Add Menu</h2>
+	<form name="itemForm" novalidate>
+	  <div class="form-group">
+		<div>
+		  <div class="form-group" >
+			<img class="img-responsive img-rounded admin-img" style="width:250px;height:150px;" ngf-src="itemImageFile" alt="imag2">
+		  </div>
+		  <div class="form-group">
+			<button class="btn btn-default"
+			  ng-model="itemImageFile"
+			  ngf-select="uploadImageFile($file)"
+			>Choose</button>
+			<span class="small">Image must be 250w X 150h pixels</span>
+		  </div>
+		</div>
+	  </div>
+
+
+	  <div class="form-group" style="width: 22%;">
+		<label class="control-label">Title</label>
+		<input type="text" ng-model="itemTitle" name="title" class="form-control" placeholder="Title" required>
+	  </div>
+	  
+	  <div class="form-group" style="width: 15%;">
+		<label class="control-label">Short Title</label>
+		<input type="text" ng-model="itemShortTitle" name="shortTitle" class="form-control" placeholder="ShortTitle" required>
+	  </div>
+
+	  <div class="form-group" style="width: 50%;">
+		<label class="control-label">Description</label>
+		<textarea class="form-control" name="description" ng-model="itemDescription" required></textarea>
+	  </div>
+
+	 <div>
+	   <div class="form-group" style="width: 12%;"> 
+		 <label class="control-label">Price Small</label> 
+		 <div class="input-group admin-item-price"> 
+		   <div class="input-group-addon">$</div> 
+		   <input class="form-control" placeholder="Price" type="number" min="1" step="any" ng-model="itemPrice"/>
+		 </div> 
+	   </div> 
+	</div> 
+
+	<div class="pull-right">
+	
+	  <button class="btn btn-success" ng-click="add()">Save</button>
+	  <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+	</div>
+
+	</form>
+</div>
