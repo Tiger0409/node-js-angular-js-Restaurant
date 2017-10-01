@@ -41,7 +41,10 @@ Good luck.
       
 ## 3). You can show localhost
 
-        localhost:3000
+        npm start
+        
+       Insert falowing:
+         localhost:3000
         
 
 
